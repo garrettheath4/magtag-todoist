@@ -7,7 +7,7 @@ Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit M
 
 1.  Follow [this guide](https://circuitpython.org/board/adafruit_magtag_2.9_grayscale/) to update your MagTag's
     bootloader and CircuitPython firmware to the latest versions.
-1.  Clone this repository and its Git submodules:
+1.  Clone this repository:
 
     ```shell
     git clone https://github.com/garrettheath4/magtag-todoist.git
