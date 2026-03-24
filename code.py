@@ -1,5 +1,6 @@
 import time
 import binascii
+import re
 
 import board
 import digitalio
@@ -11,7 +12,9 @@ from adafruit_datetime import datetime, timezone
 from rtc import RTC
 import adafruit_logging as logging
 from neopixel import NeoPixel
-from adafruit_display_text import label
+from adafruit_display_text.label import Label
+from adafruit_requests import Session
+
 from my_secrets import my_secrets
 
 
@@ -70,7 +73,7 @@ def get_display_text_labels():
 
     main_group = displayio.Group()
 
-    tasks_label = label.Label(
+    tasks_label = Label(
         terminalio.FONT,
         text="",
         color=0x000000,
@@ -88,7 +91,7 @@ def get_display_text_labels():
     except AttributeError:
         pass
 
-    updated_label = label.Label(
+    updated_label = Label(
         terminalio.FONT,
         text="",
         color=0x000000,
@@ -106,7 +109,7 @@ def get_display_text_labels():
     except AttributeError:
         pass
 
-    email_label = label.Label(
+    email_label = Label(
         terminalio.FONT,
         text="",
         color=0x000000,
@@ -144,7 +147,6 @@ def get_display_text_labels():
 
 def ensure_requests_session():
     logger = get_logger("wifi")
-    import adafruit_requests
 
     global _requests_session
     if _requests_session is not None:
@@ -191,11 +193,11 @@ def ensure_requests_session():
 
     pool = socketpool.SocketPool(wifi.radio)
     ssl_context = ssl.create_default_context()
-    _requests_session = adafruit_requests.Session(_HashableSocketPoolProxy(pool), ssl_context)
+    _requests_session = Session(_HashableSocketPoolProxy(pool), ssl_context)
     return _requests_session
 
 
-def get_today_iso_date(requests_session):
+def get_today_iso_date(requests_session: Session):
     logger = get_logger("time")
     timezone_str = my_secrets["timezone"]
     logger.debug("Fetching current datetime for timezone %s", timezone_str)
@@ -221,7 +223,7 @@ def get_today_iso_date(requests_session):
     return datetime_str
 
 
-def fetch_due_today_tasks(requests_session):
+def fetch_due_today_tasks(requests_session: Session):
     logger = get_logger("todo")
     headers = {"Authorization": "Bearer " + my_secrets["todoist_api_key"]}
     all_tasks = []
@@ -269,7 +271,7 @@ def fetch_due_today_tasks(requests_session):
     return all_tasks
 
 
-def prioritize_tasks(tasks):
+def prioritize_tasks(tasks: list):
     """
     Example task:
     {
@@ -323,7 +325,7 @@ def prioritize_tasks(tasks):
     )
 
 
-def promote_earliest_time_task(tasks):
+def promote_earliest_time_task(tasks: list):
     """
     Given a list of tasks, returns a list of tasks where the first task is the task with the earliest due time and the
     remainder of the list are the remaining tasks (without the earliest due time task). If no timed tasks exist in the
@@ -346,15 +348,19 @@ def promote_earliest_time_task(tasks):
     return [earliest_task] + [t for t in tasks if t["id"] != earliest_task["id"]]
 
 
-def ascii_only(text):
+def clean_task_text(text: str):
     """
-    Keep codepoints U+0000..U+007E; terminalio cannot render arbitrary Unicode.
-    Note that ordinal character 127 is filtered out too since it is the `Delete` character (a meta-character).
+    Cleans up task text for displaying in various ways:
+      * Convert Markdown links from `[text](url)` to `[text]`.
+      * Keep codepoints U+0000..U+007E; terminalio cannot render arbitrary Unicode.
+      * Note that ordinal character 127 is filtered out too since it is the `Delete` character (a meta-character).
     """
-    return "".join(ch for ch in text if ord(ch) < 127)
+    text = re.sub(r"(\[[^\]]+\])\([^)]+\)", r"\1", text)
+    text = "".join(ch for ch in text if ord(ch) < 127)
+    return text
 
 
-def utc_due_iso_to_local_hhmm(utc_str):
+def utc_due_iso_to_local_hhmm(utc_str: str):
     logger = get_logger("todo")
     s = utc_str.strip()
     if not s:
@@ -368,13 +374,13 @@ def utc_due_iso_to_local_hhmm(utc_str):
     return "{:02d}:{:02d}".format(loc.tm_hour, loc.tm_min)
 
 
-def _make_gmail_basic_auth_header(username, password):
+def _make_gmail_basic_auth_header(username: str, password: str):
     credentials = "{}:{}".format(username, password)
     encoded = binascii.b2a_base64(credentials.encode("utf-8")).decode("utf-8").strip()
     return "Basic " + encoded
 
 
-def fetch_unread_gmail_count(requests_session):
+def fetch_unread_gmail_count(requests_session: Session):
     logger = get_logger("mail")
     headers = {
         "Authorization": _make_gmail_basic_auth_header(
@@ -402,7 +408,7 @@ def fetch_unread_gmail_count(requests_session):
     return int(count_text)
 
 
-def build_display_text(tasks):
+def build_display_text(tasks: list):
     logger = get_logger("disp")
     if not tasks or type(tasks) != list:
         if type(tasks) != list:
@@ -425,7 +431,7 @@ def build_display_text(tasks):
             priority = int(task.get("priority", 1))
             prefix = TASK_PRIORITY_SYMBOLS[priority - 1]
         raw = task.get("content", "").strip()
-        content = ascii_only(raw).strip() or "(Untitled task)"
+        content = clean_task_text(raw).strip() or "(Untitled task)"
         lines.append("{} {}".format(prefix, content))
     return "\n".join(lines)
 
@@ -460,7 +466,7 @@ def safe_refresh_display(display):
             raise
 
 
-def refresh_tasks(display, tasks_label, updated_label, email_label, pixels: NeoPixelDimmer):
+def refresh_tasks(display, tasks_label: Label, updated_label: Label, email_label: Label, pixels: NeoPixelDimmer):
     global last_display_refresh
     pixels.fill_blue()  # Blue: working
     requests_session = ensure_requests_session()
