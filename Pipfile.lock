@@ -1,0 +1,220 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "3f5a706afa7843067fcee82cc72f1aba06da319d51ab4968b394f1c6932c2583"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.14"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "adafruit-blinka": {
+            "hashes": [
+                "sha256:0b58f58f57a473d3c5a4c2e13a6f7f82c60ad654a42b8fc7fce90a47894e3d19",
+                "sha256:d032283a7231d29f02bb3921291748776867c6c698aac12a5ea9411c484e0061"
+            ],
+            "markers": "python_full_version >= '3.7.0'",
+            "version": "==9.0.3"
+        },
+        "adafruit-blinka-displayio": {
+            "hashes": [
+                "sha256:cf7c5c4e1724e8b82f092ca81ca51fafebe85b6e47774462f4051342bac4d754",
+                "sha256:f1d5b41eca6a1e9e43c04ee734b8f27666c2bcc8045cc1d7acf2b4631daa3558"
+            ],
+            "version": "==2.3.2"
+        },
+        "adafruit-circuitpython-adafruitio": {
+            "hashes": [
+                "sha256:40f29cbb59b11f3067f385af3a881b436fd00c7a8b4be7113d4ae5e1bf084805",
+                "sha256:a8311db4ac1bdabbedc04295413d8649e8fad8b8c8ee882b1056ce84d6aa9be6"
+            ],
+            "version": "==6.1.0"
+        },
+        "adafruit-circuitpython-bitmap-font": {
+            "hashes": [
+                "sha256:43a154ecabd99775e807657c9e50dd707608aeb35f7e6b052ac3257abce12a7e",
+                "sha256:4c16254c517e160e80a1d1d600171b8edee1c3baa3e454e14e391314e1a926ed"
+            ],
+            "version": "==2.4.0"
+        },
+        "adafruit-circuitpython-busdevice": {
+            "hashes": [
+                "sha256:4d2b3c4f6c90fe2ef158c506e48972560f4f26c4f3faa51125123c146d4d5748",
+                "sha256:87a25bf558f1bb8662980af9a2857a53de898942a7b4ab58e16e9ea77cb59f59"
+            ],
+            "version": "==5.2.15"
+        },
+        "adafruit-circuitpython-connectionmanager": {
+            "hashes": [
+                "sha256:83c7eafa294fc6e889076d1ba8a7ff902e29d062977d3602078b1594868b7042",
+                "sha256:daa41f7675533fbb451c0f522c894911dd003f67b26f0e7be832f2e240ba28b4"
+            ],
+            "version": "==3.1.6"
+        },
+        "adafruit-circuitpython-datetime": {
+            "hashes": [
+                "sha256:635e612f0495ada807cdca3ef294f0bb643747a68fffc4cddbe108daa8c70b42",
+                "sha256:926b25dd7179eafb0889e95f1d14f8565ec696d8c3e1a076db334020ffc15a01"
+            ],
+            "index": "pypi",
+            "version": "==1.4.4"
+        },
+        "adafruit-circuitpython-display-text": {
+            "hashes": [
+                "sha256:b355123d2432d4dc3cc1f365356432ff0ef0bef509533b488361f91a74a9d346",
+                "sha256:e606e9fc6fe98a746653b4cf1f7b7bdbd36e838e0b4f33422f82e7539234352f"
+            ],
+            "index": "pypi",
+            "version": "==5.0.1"
+        },
+        "adafruit-circuitpython-fakerequests": {
+            "hashes": [
+                "sha256:54d0222749808027ea68e201548d645cc74a7f68436da7e16c0c58221c8f4296",
+                "sha256:5bfb89859cb629ef06bc679efd32f75fe9cf50529f878a2a3958dd2c37d8237e"
+            ],
+            "version": "==1.1.1"
+        },
+        "adafruit-circuitpython-imageload": {
+            "hashes": [
+                "sha256:68a46ce90921bf984a7aaa2c06841e8c126c5305276a09ee3a52dbe6c19dd911",
+                "sha256:867e233ff37a8d5c4abd8ea77edb0682b8f29cc1d79c5cd9700935d3c97cd23a"
+            ],
+            "version": "==1.24.5"
+        },
+        "adafruit-circuitpython-logging": {
+            "hashes": [
+                "sha256:1b2bd3a32545a8084445783c7120b4cbfba4afb1e4a72a743c6b27585fed9440",
+                "sha256:514a5b1471cfceb8b66c67598306b75b75bb410325aa6cfbb1de182c2c78fe2b"
+            ],
+            "index": "pypi",
+            "version": "==5.6.2"
+        },
+        "adafruit-circuitpython-minimqtt": {
+            "hashes": [
+                "sha256:0475f6f55fd0080d0d305f47801aa97031eca7be676e39c06f63f4702b8180e6",
+                "sha256:41d0b0edb36531a810c20e66f0c35ef480675f0ca08738b292753fc63a40496d"
+            ],
+            "version": "==8.0.3"
+        },
+        "adafruit-circuitpython-miniqr": {
+            "hashes": [
+                "sha256:1ae1753e71e409b5f970e491374d4fb5409d6a8afda07606da24f763fc06c1af",
+                "sha256:4895d0ca1e9cce6cfcf2d7bd99d963b4f1480fbfb546f8acfb65e4d863fa7de9"
+            ],
+            "version": "==2.1.7"
+        },
+        "adafruit-circuitpython-neopixel": {
+            "hashes": [
+                "sha256:f31d6f846ae757a8e764c5e4dcb09119660ada6c24299ae0ed5a4b41119ff89b",
+                "sha256:f5f47d7f7ec443999671b03403fc3f098de34171629b86754e2b6977f11b9028"
+            ],
+            "index": "pypi",
+            "version": "==6.3.21"
+        },
+        "adafruit-circuitpython-pixelbuf": {
+            "hashes": [
+                "sha256:16af5527ad8cbd8fe6cfe4e99893470c8980f2d75022e4cc67fc87b7cf0b29ff",
+                "sha256:19b78183b5773fa4a81eb8fc1458b9feb8178884864abd7c6676db2765e26ed3"
+            ],
+            "version": "==2.0.10"
+        },
+        "adafruit-circuitpython-portalbase": {
+            "hashes": [
+                "sha256:093cbe911472baa5044613c5d5f0d888e0767d28eda6017f6976f87d9ec79333",
+                "sha256:787c6ca41c4f9ad89a97a097a4b08e12b93961d4a919e97da286dc57165d3ea3"
+            ],
+            "index": "pypi",
+            "version": "==3.5.0"
+        },
+        "adafruit-circuitpython-requests": {
+            "hashes": [
+                "sha256:409cb1c9304a0ce0a4b2f64d572400007849f6972f92a4b08ebfe35a532761e7",
+                "sha256:62c6e44d23e8dfdc24f1f33464953019a9d88853b29fa471ac00200d4fa3e8ff"
+            ],
+            "version": "==4.1.15"
+        },
+        "adafruit-circuitpython-simpleio": {
+            "hashes": [
+                "sha256:9af69e2e22437795494ddee81818170ee3bbb17536fcb114511ba318c3cc32d9",
+                "sha256:def15096a9f76f3ac19a332aa32e63dd2f2f05ab702120d09bebdd3e5007ad34"
+            ],
+            "version": "==3.0.18"
+        },
+        "adafruit-circuitpython-ticks": {
+            "hashes": [
+                "sha256:7e7524c50675cb45c8b055716551d4e914f855cff96eb248c7759d721d13867d",
+                "sha256:8c1fa227beb96aa659b20859a63c0e736022d10f7d25160d2f44f5284eb9fab4"
+            ],
+            "version": "==1.1.5"
+        },
+        "adafruit-circuitpython-typing": {
+            "hashes": [
+                "sha256:63f196f834e47842bcd4cf8c37aaa0c61e1aeb5d07f056c875fc3016cda91a12",
+                "sha256:f6d0a02150e1e4efb5a2c2945b88d948809fdb465875f39947108b8467c986d9"
+            ],
+            "markers": "python_version >= '3.8'",
+            "version": "==1.12.3"
+        },
+        "adafruit-platformdetect": {
+            "hashes": [
+                "sha256:69e694d80d551c6cb8e39f731e6ee0de1f135e64cffee0e2a665b1f9579c10d7",
+                "sha256:dc2188ddb348bfd2a02a9533263294cc0f1762bd9f6b3b20866547d98820cd71"
+            ],
+            "version": "==3.88.0"
+        },
+        "adafruit-pureio": {
+            "hashes": [
+                "sha256:281ab2099372cc0decc26326918996cbf21b8eed694ec4764d51eefa029d324e",
+                "sha256:c4cfbb365731942d1f1092a116f47dfdae0aef18c5b27f1072b5824ad5ea8c7c"
+            ],
+            "markers": "python_full_version >= '3.5.0'",
+            "version": "==1.1.11"
+        },
+        "binho-host-adapter": {
+            "hashes": [
+                "sha256:1e6da7a84e208c13b5f489066f05774bff1d593d0f5bf1ca149c2b8e83eae856",
+                "sha256:f71ca176c1e2fc1a5dce128beb286da217555c6c7c805f2ed282a6f3507ec277"
+            ],
+            "version": "==0.1.6"
+        },
+        "pyftdi": {
+            "hashes": [
+                "sha256:efd3f5a7d43202dc883ff261a7b1cb4dcbbe65b19628f8603a8b1183a7bc2841"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==0.57.1"
+        },
+        "pyserial": {
+            "hashes": [
+                "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb",
+                "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"
+            ],
+            "version": "==3.5"
+        },
+        "pyusb": {
+            "hashes": [
+                "sha256:3af070b607467c1c164f49d5b0caabe8ac78dbed9298d703a8dbf9df4052d17e",
+                "sha256:bf9b754557af4717fe80c2b07cc2b923a9151f5c08d17bdb5345dac09d6a0430"
+            ],
+            "markers": "python_full_version >= '3.9.0'",
+            "version": "==1.3.1"
+        },
+        "typing-extensions": {
+            "hashes": [
+                "sha256:0cea48d173cc12fa28ecabc3b837ea3cf6f38c6d1136f85cbaaf598984861466",
+                "sha256:f0fa19c6845758ab08074a0cfa8b7aecb71c999ca73d62883bc25cc018c4e548"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==4.15.0"
+        }
+    },
+    "develop": {}
+}
