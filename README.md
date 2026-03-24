@@ -1,6 +1,7 @@
 # MagTag Todoist
 
-Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit MagTag.
+Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit MagTag. Also optionally displays the
+number of unread messages in Gmail inbox if the email and password are provided in `my_secrets.py` (see below).
 
 
 ## Quickstart
@@ -38,6 +39,8 @@ Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit M
         'password': 'myWifiPassword',
         'todoist_api_key': '1234567890abcdefghijklmnopqrstuvwxyz',
         'timezone': "America/New_York"  # https://time.now/developer
+        'email_gmail_address': 'example@gmail.com',  # optional
+        'email_gmail_password': 'abcdefghijklmnop',  # optional
     }
     ```
 
