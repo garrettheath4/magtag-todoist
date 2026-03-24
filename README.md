@@ -1,6 +1,6 @@
 # MagTag Todoist
 
-Display high-priority Todoist tasks on an Adafruit MagTag.
+Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit MagTag.
 
 
 ## Quickstart
@@ -43,14 +43,30 @@ Display high-priority Todoist tasks on an Adafruit MagTag.
 
 ## Debugging
 
-If you see `ImportError: no module named 'warnings'`, your CircuitPython build is older than what current
-`adafruit_portalbase` expects. Either **upgrade** CircuitPython to a recent 9.x build for MagTag, or run `make` so
-`circuitpython_stubs/warnings.py` is copied to `CIRCUITPY/lib/warnings.py` (no-op shim).
+Run the following command to connect to the MagTag debug console using `screen` in a terminal:
+
+```shell
+screen /dev/tty.usbmodemC7FD1A7142021 115200
+```
+
+Notes on using `screen`:
+*   Press `Ctrl`+`A` then `Esc` to enter scroll mode.
+*   Scroll up with `k` or `Ctrl`+`u`
+*   Scroll down with `j` or `Ctrl`+`d`
+*   Exit scroll mode by pressing `Esc` _twice_
+*   Consider increasing the screen scrollback by running the command `echo 'defscrollback 5000' >>~/.screenrc` before
+    starting `screen`
+
+
+### Troubleshooting
+
+`No network with that ssid` means the MagTag can’t see your AP: use the **2.4 GHz** network (ESP32-S2 does not do 5 GHz),
+check the SSID/password in `my_secrets.py`, and fix typos / hidden spaces (the code strips leading/trailing whitespace).
 
 If you see `AttributeError: 'EPaperDisplay' object has no attribute 'root_group'`, your **firmware is older** than the
 display API expected by current `adafruit_portalbase` / `adafruit_magtag.graphics`. This project’s `code.py` avoids the
 high-level `MagTag()` helper and uses `displayio` + `display.show()` when `root_group` is missing, so it should run on
-those boards; upgrading CircuitPython to match your library bundle (e.g. 9.x) is still recommended.
+those boards; upgrading CircuitPython to match your library bundle (e.g. 10.x) is still recommended.
 
 If you see `AttributeError: 'module' object has no attribute 'getenv'` from `adafruit_portalbase/network.py`, your
 CircuitPython `os` module is too old for current PortalBase. This project connects with **`wifi.radio` +
@@ -64,20 +80,11 @@ If you see `TypeError: unsupported type for __hash__: 'SocketPool'` inside `adaf
 `adafruit_requests.Session` — current `adafruit_requests` expects the connection-manager pool wrapper. Ensure
 `adafruit_connection_manager.mpy` is on `CIRCUITPY/lib/` (included in this repo’s `make prod` list).
 
-`No network with that ssid` means the MagTag can’t see your AP: use the **2.4 GHz** network (ESP32-S2 does not do 5 GHz),
-check the SSID/password in `my_secrets.py`, and fix typos / hidden spaces (the code strips leading/trailing whitespace).
-
-Run the following command to connect to the MagTag debug console using `screen` in a terminal:
-
-```shell
-screen /dev/tty.usbmodemC7FD1A7142021 115200
-```
-
 
 ## Requirements
 
 * [Adafruit MagTag 2.9" E-Ink WiFi Display](https://www.adafruit.com/product/4800)
-* Todoist API key
+* Todoist account and [API token](https://app.todoist.com/app/settings/integrations/developer)
 
 
 
