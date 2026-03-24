@@ -19,11 +19,14 @@ Display high-priority [Todoist](https://www.todoist.com/) tasks on an Adafruit M
     *   Python Source Bundle
 1.  Decompress the downloaded files. They should each contain one folder. Move these folders into the `lib` folder in
     this repo (which you might first have to create with `mkdir lib`).
-1.  Update the `PROD_LIB` and `DEV_LIB` variables in `Makefile` with the paths to the latest-version bundle and source
-    bundle, respectively.
+1.  Update the `PROD_LIB` and `DEV_LIB` variables in the `Makefile` with the paths to the latest-version bundle and
+    source bundle, respectively.
 1.  Plug in MagTag to your computer with a USB-C cable and turn the physical switch on it to the _On_ position. A
     flash-drive-like file storage device called _CIRCUITPY_ should automatically mount.
+    *   **Note:** If the _CIRCUITPY_ device does not appear, make sure you are using a sync/data USB-C cable, not a
+        charge-only USB-C cable.
 1.  Run `make` to copy the code and required libraries from this repository to the _CIRCUITPY_ drive.
+    *   **Note:** If you're _not_ running this on a Mac, you'll need to update the `TARGET` variable in the `Makefile`
 1.  Create a `my_secrets.py` file inside the _CIRCUITPY_ drive with the following contents:
 
     ```python
